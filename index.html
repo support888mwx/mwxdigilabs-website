@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MWX DigiLabs — Mobile App Developer</title>
+  <meta name="description" content="MWX DigiLabs builds smart, useful mobile apps for Filipinos. Developer of Lotto Tracker PH.">
+  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📱</text></svg>">
+  <style>
+    :root {
+      --blue: #102D7D;
+      --blue-dark: #0A1647;
+      --blue-light: #1a3fa0;
+      --accent: #FFD700;
+      --text: #E8ECF4;
+      --text-muted: #9BA4B8;
+      --bg: #060E2A;
+      --card-bg: rgba(16, 45, 125, 0.25);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Subtle gradient background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 20% 0%, rgba(16, 45, 125, 0.4) 0%, transparent 60%),
+                  radial-gradient(ellipse at 80% 100%, rgba(16, 45, 125, 0.2) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      border-radius: 18px;
+      font-size: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(16, 45, 125, 0.4);
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    h1 span { color: var(--accent); }
+
+    .tagline {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--accent));
+      border-radius: 2px;
+      margin: 40px auto;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    /* App Card */
+    .app-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .app-card:hover {
+      border-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--blue), #1a4abc);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .app-info h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .app-info p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(16, 45, 125, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-right: 6px;
+    }
+
+    .store-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .store-link:hover { text-decoration: underline; }
+
+    /* About */
+    .about-text {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .contact-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .contact-item .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--card-border);
+      margin-top: 20px;
+    }
+
+    footer p {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      header { padding: 40px 0 30px; }
+      h1 { font-size: 1.6rem; }
+      .app-card { flex-direction: column; align-items: center; text-align: center; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="logo-mark">M</div>
+      <h1>MWX <span>DigiLabs</span></h1>
+      <p class="tagline">Building smart, useful apps for Filipinos</p>
+    </header>
+
+    <div class="divider"></div>
+
+    <section>
+      <h2>Our Apps</h2>
+      <div class="app-card">
+        <div class="app-icon">🎱</div>
+        <div class="app-info">
+          <h3>Lotto Tracker PH</h3>
+          <p>Real-time PCSO lotto results, lucky number generator, ticket scanner, hot/cold statistics, and draw history — all in one app.</p>
+          <span class="badge">Android</span>
+          <span class="badge">Free</span>
+          <span class="badge">PCSO Results</span>
+          <br>
+          <a class="store-link" href="https://play.google.com/store/apps/details?id=com.mwxdigilabs.lottotracker" target="_blank">
+            ▶ View on Google Play
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>About</h2>
+      <p class="about-text">
+        MWX DigiLabs is an independent app studio based in the Philippines.
+        We focus on building practical, well-designed mobile applications that
+        solve everyday problems for Filipino users. Our apps are built with
+        care for performance, accuracy, and a great user experience.
+      </p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="label">Email</div>
+          <a href="mailto:support@mwxdigilabs.com">support@mwxdigilabs.com</a>
+        </div>
+        <div class="contact-item">
+          <div class="label">Website</div>
+          <a href="https://mwxdigilabs.com">mwxdigilabs.com</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 MWX DigiLabs. All rights reserved.</p>
+      <p style="margin-top: 8px;">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
