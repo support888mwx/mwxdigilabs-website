@@ -315,6 +315,137 @@ section { padding: 110px 0; }
 
 /* hero phones layout — more dynamic, polished composition */
 .hero-visual { position: relative; height: 600px; perspective: 1400px; }
+
+/* Brand-icon screen (hero only — clean app intro card) */
+.phone-icon-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 37px;
+  overflow: hidden;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 22px;
+}
+.phone-icon-screen.screen-lotto {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 18%, rgba(78, 158, 255, 0.42), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 85%, rgba(255, 110, 80, 0.18), transparent 65%),
+    linear-gradient(170deg, #0a1942 0%, #060d2a 55%, #04081d 100%);
+}
+.phone-icon-screen.screen-bible {
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 18%, rgba(180, 215, 255, 0.65), transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 85%, rgba(255, 220, 140, 0.35), transparent 65%),
+    linear-gradient(170deg, #eaf3ff 0%, #cfe2fa 50%, #b6d3f4 100%);
+}
+.brand-bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(120, 170, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120, 170, 255, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 78%);
+  pointer-events: none;
+}
+.brand-bg-pattern.brand-bg-light {
+  background-image:
+    linear-gradient(rgba(60, 110, 200, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 110, 200, 0.08) 1px, transparent 1px);
+}
+.app-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+.app-brand.app-brand-light { color: #11244c; }
+.app-brand-icon-wrap {
+  position: relative;
+  width: 96px; height: 96px;
+  border-radius: 26px;
+  padding: 4px;
+  background: linear-gradient(155deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+  box-shadow:
+    0 24px 50px -14px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 0 60px -10px rgba(56, 225, 255, 0.5);
+}
+.app-brand.app-brand-light .app-brand-icon-wrap {
+  background: linear-gradient(155deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5));
+  box-shadow:
+    0 22px 44px -12px rgba(30, 80, 160, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+/* subtle glow halo behind icon */
+.app-brand-icon-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 225, 255, 0.35), transparent 70%);
+  filter: blur(14px);
+  z-index: -1;
+}
+.app-brand.app-brand-light .app-brand-icon-wrap::before {
+  background: radial-gradient(circle, rgba(120, 180, 255, 0.45), transparent 70%);
+}
+.app-brand-icon {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+  object-fit: cover;
+  display: block;
+}
+.app-brand-name {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  margin-top: 4px;
+}
+.app-brand-tag {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: rgba(225, 235, 255, 0.7);
+  margin: 0;
+  letter-spacing: 0.005em;
+}
+.app-brand.app-brand-light .app-brand-tag { color: rgba(30, 60, 110, 0.7); }
+.app-brand-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+.brand-pill {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 9px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(225, 235, 255, 0.85);
+  text-transform: uppercase;
+}
+.app-brand.app-brand-light .brand-pill {
+  background: rgba(20, 45, 90, 0.06);
+  border-color: rgba(20, 45, 90, 0.18);
+  color: rgba(20, 45, 90, 0.78);
+}
 .phone-main {
   position: absolute;
   left: 18%; top: 40px;
